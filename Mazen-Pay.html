@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6336c9">
+  <meta name="description" content="MAZEN PAY - Smart Demo Wallet">
+  <title>MAZEN PAY</title>
+
+  <link rel="stylesheet" href="Mazen-Pay.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png">
+</head>
+<body>
+
+  <!-- SPLASH SCREEN -->
+  <div id="splashScreen">
+    <div class="splash-logo">M</div>
+    <h1>MAZEN PAY</h1>
+    <p>SMART • SIMPLE • SECURE</p>
+  </div>
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+
+      <div class="brand">
+        <div class="brand-logo">M</div>
+        <div>
+          <h1>MAZEN <span>PAY</span></h1>
+          <small>SMART WALLET</small>
+        </div>
+      </div>
+
+      <nav class="side-nav">
+        <button class="nav-item active" data-page="home"><span>⌂</span><b data-ar="الرئيسية" data-en="Home">الرئيسية</b></button>
+        <button class="nav-item" data-page="transfer"><span>⇄</span><b data-ar="تحويل الأموال" data-en="Transfer">تحويل الأموال</b></button>
+        <button class="nav-item" data-page="beneficiaries"><span>♙</span><b data-ar="المستفيدون" data-en="Beneficiaries">المستفيدون</b></button>
+        <button class="nav-item" data-page="bills"><span>▤</span><b data-ar="دفع الفواتير" data-en="Bills">دفع الفواتير</b></button>
+        <button class="nav-item" data-page="banks"><span>▥</span><b data-ar="البنوك" data-en="Banks">البنوك</b></button>
+        <button class="nav-item" data-page="exchange"><span>💱</span><b data-ar="تحويل العملات" data-en="Exchange">تحويل العملات</b></button>
+        <button class="nav-item" data-page="history"><span>◷</span><b data-ar="سجل العمليات" data-en="History">سجل العمليات</b></button>
+        <button class="nav-item" data-page="notifications"><span>♧</span><b data-ar="الإشعارات" data-en="Notifications">الإشعارات</b></button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="nav-item" id="themeBtn"><span>☾</span><b data-ar="الوضع الليلي" data-en="Dark mode">الوضع الليلي</b></button>
+        <button class="nav-item" id="languageBtn"><span>文</span><b data-ar="English" data-en="العربية">English</b></button>
+        <p>MAZEN PAY © 2026</p>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main-area">
+
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn">☰</button>
+
+        <div class="topbar-title">
+          <strong id="pageTitle">الرئيسية</strong>
+          <small data-ar="أهلاً بك في MAZEN PAY" data-en="Welcome to MAZEN PAY">أهلاً بك في MAZEN PAY</small>
+        </div>
+
+        <button class="notification-btn" id="notificationBtn">
+          ♧
+          <i id="notificationDot"></i>
+        </button>
+      </header>
+
+      <div class="demo-banner">
+        <span>ⓘ</span>
+        <span data-ar="نسخة تجريبية — جميع الأرصدة والتحويلات والعمليات غير حقيقية." data-en="Demo version — all balances and transactions are simulated.">نسخة تجريبية — جميع الأرصدة والتحويلات والعمليات غير حقيقية.</span>
+      </div>
+
+      <!-- HOME -->
+      <section class="page active" id="page-home">
+
+        <div class="welcome-row">
+          <div>
+            <p class="muted" data-ar="مرحباً بك 👋" data-en="Welcome back 👋">مرحباً بك 👋</p>
+            <h2 data-ar="محفظتك في مكان واحد" data-en="Your wallet, all in one place">محفظتك في مكان واحد</h2>
+          </div>
+          <div class="avatar">M</div>
+        </div>
+
+        <div class="balance-card">
+          <div class="balance-head">
+            <span data-ar="إجمالي الرصيد التجريبي" data-en="Total demo balance">إجمالي الرصيد التجريبي</span>
+            <button class="eye-btn" id="toggleBalance">إخفاء</button>
+          </div>
+
+          <div class="balance-number" id="homeBalance">12,500.00 EGP</div>
+
+          <div class="balance-foot">
+            <span data-ar="محفظة MAZEN PAY" data-en="MAZEN PAY Wallet">محفظة MAZEN PAY</span>
+            <span class="balance-chip">DEMO WALLET</span>
+          </div>
+        </div>
+
+        <h3 class="section-title" data-ar="التحكم في الرصيد التجريبي" data-en="Demo balance controls">التحكم في الرصيد التجريبي</h3>
+
+        <div class="panel balance-controls">
+          <label for="balanceControlAmount" data-ar="المبلغ بالجنيه" data-en="Amount in EGP">المبلغ بالجنيه</label>
+          <input type="number" id="balanceControlAmount" min="0" step="0.01" placeholder="500">
+
+          <div class="control-buttons">
+            <button class="primary-btn" id="addBalanceBtn" data-ar="إضافة رصيد" data-en="Add balance">إضافة رصيد</button>
+            <button class="secondary-btn" id="subtractBalanceBtn" data-ar="خصم رصيد" data-en="Subtract balance">خصم رصيد</button>
+          </div>
+
+          <button class="secondary-btn" id="setBalanceBtn" data-ar="تعيين الرصيد" data-en="Set balance">تعيين الرصيد</button>
+          <p class="form-message" id="balanceControlMessage"></p>
+        </div>
+
+        <h3 class="section-title" data-ar="الخدمات السريعة" data-en="Quick services">الخدمات السريعة</h3>
+
+        <div class="service-grid">
+          <button class="service-card" data-go="transfer">
+            <span class="service-icon purple">⇄</span>
+            <b data-ar="تحويل الأموال" data-en="Transfer">تحويل الأموال</b>
+            <small data-ar="تحويل تجريبي" data-en="Demo transfer">تحويل تجريبي</small>
+          </button>
+
+          <button class="service-card" data-go="bills">
+            <span class="service-icon orange">▤</span>
+            <b data-ar="دفع الفواتير" data-en="Pay bills">دفع الفواتير</b>
+            <small data-ar="فواتير الخدمات" data-en="Utility bills">فواتير الخدمات</small>
+          </button>
+
+          <button class="service-card" data-go="exchange">
+            <span class="service-icon blue">💱</span>
+            <b data-ar="تحويل العملات" data-en="Exchange">تحويل العملات</b>
+            <small data-ar="تحويل العملات" data-en="Convert currencies">تحويل العملات</small>
+          </button>
+        </div>
+
+        <div class="section-heading">
+          <h3 class="section-title" data-ar="آخر العمليات" data-en="Recent transactions">آخر العمليات</h3>
+          <button class="text-btn" data-go="history" data-ar="عرض الكل" data-en="View all">عرض الكل</button>
+        </div>
+
+        <div class="panel" id="homeTransactions"></div>
+      </section>
+
+      <!-- TRANSFER -->
+      <section class="page" id="page-transfer">
+        <div class="page-intro">
+          <div class="big-icon purple">⇄</div>
+          <div>
+            <h2 data-ar="تحويل الأموال" data-en="Money transfer">تحويل الأموال</h2>
+            <p class="muted" data-ar="حوّل الأموال بشكل تجريبي" data-en="Make a simulated transfer">حوّل الأموال بشكل تجريبي</p>
+          </div>
+        </div>
+
+        <form class="panel form-panel" id="transferForm">
+          <h3 data-ar="تفاصيل التحويل" data-en="Transfer details">تفاصيل التحويل</h3>
+
+          <label for="transferBeneficiary" data-ar="المستفيد" data-en="Beneficiary">المستفيد</label>
+          <select id="transferBeneficiary" required>
+            <option value="" data-ar="اختر المستفيد" data-en="Choose beneficiary">اختر المستفيد</option>
+          </select>
+
+          <label for="transferAmount" data-ar="المبلغ بالجنيه" data-en="Amount in EGP">المبلغ بالجنيه</label>
+          <input type="number" id="transferAmount" min="0.01" step="0.01" required>
+
+          <label for="transferNote" data-ar="ملاحظة (اختياري)" data-en="Note (optional)">ملاحظة (اختياري)</label>
+          <input type="text" id="transferNote" maxlength="100">
+
+          <button class="primary-btn" type="submit" data-ar="تأكيد التحويل التجريبي" data-en="Confirm demo transfer">تأكيد التحويل التجريبي</button>
+          <p class="form-message" id="transferMessage"></p>
+        </form>
+      </section>
+
+      <!-- BENEFICIARIES -->
+      <section class="page" id="page-beneficiaries">
+        <div class="page-intro">
+          <div class="big-icon purple">♙</div>
+          <div>
+            <h2 data-ar="المستفيدون" data-en="Beneficiaries">المستفيدون</h2>
+            <p class="muted" data-ar="إدارة المستفيدين التجريبيين" data-en="Manage demo beneficiaries">إدارة المستفيدين التجريبيين</p>
+          </div>
+        </div>
+
+        <form class="panel form-panel" id="beneficiaryForm">
+          <h3 data-ar="إضافة مستفيد جديد" data-en="Add new beneficiary">إضافة مستفيد جديد</h3>
+
+          <label for="beneficiaryName" data-ar="اسم المستفيد" data-en="Beneficiary name">اسم المستفيد</label>
+          <input type="text" id="beneficiaryName" maxlength="50" required>
+
+          <label for="beneficiaryAlias" data-ar="رقم المحفظة أو الاسم المختصر" data-en="Wallet number or alias">رقم المحفظة أو الاسم المختصر</label>
+          <input type="text" id="beneficiaryAlias" maxlength="50" required>
+
+          <button class="primary-btn" type="submit" data-ar="إضافة المستفيد" data-en="Add beneficiary">إضافة المستفيد</button>
+          <p class="form-message" id="beneficiaryMessage"></p>
+        </form>
+
+        <div class="section-heading">
+          <h3 class="section-title" data-ar="قائمة المستفيدين" data-en="Beneficiary list">قائمة المستفيدين</h3>
+          <span class="count-badge" id="beneficiaryCount">0</span>
+        </div>
+
+        <div class="list-panel" id="beneficiaryList"></div>
+      </section>
+
+      <!-- BILLS -->
+      <section class="page" id="page-bills">
+        <div class="page-intro">
+          <div class="big-icon orange">▤</div>
+          <div>
+            <h2 data-ar="دفع الفواتير" data-en="Pay bills">دفع الفواتير</h2>
+            <p class="muted" data-ar="سداد تجريبي للفواتير" data-en="Simulated bill payment">سداد تجريبي للفواتير</p>
+          </div>
+        </div>
+
+        <div class="bill-types">
+          <button class="bill-type selected" data-bill="electricity"><span>⚡</span><b data-ar="كهرباء" data-en="Electricity">كهرباء</b></button>
+          <button class="bill-type" data-bill="water"><span>💧</span><b data-ar="مياه" data-en="Water">مياه</b></button>
+          <button class="bill-type" data-bill="gas"><span>🔥</span><b data-ar="غاز" data-en="Gas">غاز</b></button>
+          <button class="bill-type" data-bill="internet"><span>🌐</span><b data-ar="إنترنت" data-en="Internet">إنترنت</b></button>
+          <button class="bill-type" data-bill="phone"><span>📱</span><b data-ar="هاتف" data-en="Phone">هاتف</b></button>
+        </div>
+
+        <form class="panel form-panel" id="billForm">
+          <h3 data-ar="بيانات الفاتورة" data-en="Bill details">بيانات الفاتورة</h3>
+
+          <label for="billTitle" data-ar="نوع الفاتورة" data-en="Bill type">نوع الفاتورة</label>
+          <input type="text" id="billTitle" value="كهرباء" readonly>
+
+          <label for="billAccount" data-ar="رقم الحساب أو الاشتراك" data-en="Account or subscription number">رقم الحساب أو الاشتراك</label>
+          <input type="text" id="billAccount" required>
+
+          <label for="billAmount" data-ar="المبلغ بالجنيه" data-en="Amount in EGP">المبلغ بالجنيه</label>
+          <input type="number" id="billAmount" min="0.01" step="0.01" required>
+
+          <button class="primary-btn" type="submit" data-ar="دفع الفاتورة التجريبية" data-en="Pay demo bill">دفع الفاتورة التجريبية</button>
+          <p class="form-message" id="billMessage"></p>
+        </form>
+      </section>
+
+      <!-- BANKS -->
+      <section class="page" id="page-banks">
+        <div class="page-intro">
+          <div class="big-icon green">▥</div>
+          <div>
+            <h2 data-ar="البنوك" data-en="Banks">البنوك</h2>
+            <p class="muted" data-ar="معلومات بنكية توضيحية" data-en="Informational bank section">معلومات بنكية توضيحية</p>
+          </div>
+        </div>
+
+        <div class="bank-list">
+          <div class="bank-card">
+            <div class="bank-symbol">N</div>
+            <div class="bank-details">
+              <b>National Bank of Egypt</b>
+              <small data-ar="البنك الأهلي المصري" data-en="National Bank of Egypt">البنك الأهلي المصري</small>
+            </div>
+            <span class="bank-status" data-ar="معلومات فقط" data-en="Info only">معلومات فقط</span>
+          </div>
+
+          <div class="bank-card">
+            <div class="bank-symbol blue-bg">B</div>
+            <div class="bank-details">
+              <b>Banque Misr</b>
+              <small data-ar="بنك مصر" data-en="Banque Misr">بنك مصر</small>
+            </div>
+            <span class="bank-status" data-ar="معلومات فقط" data-en="Info only">معلومات فقط</span>
+          </div>
+
+          <div class="bank-card">
+            <div class="bank-symbol orange-bg">C</div>
+            <div class="bank-details">
+              <b>CIB</b>
+              <small data-ar="البنك التجاري الدولي" data-en="Commercial International Bank">البنك التجاري الدولي</small>
+            </div>
+            <span class="bank-status" data-ar="معلومات فقط" data-en="Info only">معلومات فقط</span>
+          </div>
+        </div>
+
+        <div class="panel info-panel">
+          <b data-ar="تنبيه" data-en="Notice">تنبيه</b>
+          <p data-ar="هذا القسم تعريفي فقط، ولا يوجد اتصال بالبنوك أو بالحسابات البنكية الحقيقية." data-en="This section is informational only. It does not connect to real banks or bank accounts.">هذا القسم تعريفي فقط، ولا يوجد اتصال بالبنوك أو بالحسابات البنكية الحقيقية.</p>
+        </div>
+      </section>
+
+      <!-- EXCHANGE -->
+      <section class="page" id="page-exchange">
+        <div class="page-intro">
+          <div class="big-icon blue">💱</div>
+          <div>
+            <h2 data-ar="تحويل العملات" data-en="Currency exchange">تحويل العملات</h2>
+            <p class="muted" data-ar="احسب قيمة العملات بشكل تجريبي" data-en="Calculate simulated currency values">احسب قيمة العملات بشكل تجريبي</p>
+          </div>
+        </div>
+
+        <div class="panel form-panel">
+          <label for="exchangeAmount" data-ar="المبلغ" data-en="Amount">المبلغ</label>
+          <input type="number" id="exchangeAmount" min="0" step="0.01" value="100">
+
+          <label for="exchangeFrom" data-ar="من عملة" data-en="From currency">من عملة</label>
+          <select id="exchangeFrom">
+            <option value="EGP">EGP - Egyptian Pound</option>
+            <option value="USD">USD - US Dollar</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="GBP">GBP - British Pound</option>
+            <option value="SAR">SAR - Saudi Riyal</option>
+            <option value="AED">AED - UAE Dirham</option>
+          </select>
+
+          <button class="secondary-btn" id="exchangeSwap" type="button" data-ar="⇅ تبديل العملات" data-en="⇅ Swap currencies">⇅ تبديل العملات</button>
+
+          <label for="exchangeTo" data-ar="إلى عملة" data-en="To currency">إلى عملة</label>
+          <select id="exchangeTo">
+            <option value="USD">USD - US Dollar</option>
+            <option value="EGP">EGP - Egyptian Pound</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="GBP">GBP - British Pound</option>
+            <option value="SAR">SAR - Saudi Riyal</option>
+            <option value="AED">AED - UAE Dirham</option>
+          </select>
+
+          <button class="primary-btn" id="exchangeBtn" type="button" data-ar="احسب التحويل" data-en="Calculate exchange">احسب التحويل</button>
+
+          <div class="exchange-result">
+            <small data-ar="قيمة التحويل" data-en="Converted amount">قيمة التحويل</small>
+            <strong id="exchangeResult">0.00</strong>
+            <p id="exchangeRateInfo"></p>
+            <p id="exchangeDate"></p>
+          </div>
+
+          <p class="form-message" id="exchangeMessage"></p>
+        </div>
+      </section>
+
+      <!-- HISTORY -->
+      <section class="page" id="page-history">
+        <div class="section-heading">
+          <div>
+            <h2 data-ar="سجل العمليات" data-en="Transaction history">سجل العمليات</h2>
+            <p class="muted" data-ar="كل العمليات التجريبية" data-en="All simulated transactions">كل العمليات التجريبية</p>
+          </div>
+          <button class="text-btn" id="clearHistoryBtn" data-ar="مسح السجل" data-en="Clear history">مسح السجل</button>
+        </div>
+
+        <div class="list-panel" id="historyList"></div>
+      </section>
+
+      <!-- NOTIFICATIONS -->
+      <section class="page" id="page-notifications">
+        <div class="page-intro">
+          <div class="big-icon pink">♧</div>
+          <div>
+            <h2 data-ar="الإشعارات" data-en="Notifications">الإشعارات</h2>
+            <p class="muted" data-ar="آخر تنبيهات المحفظة" data-en="Your wallet updates">آخر تنبيهات المحفظة</p>
+          </div>
+        </div>
+
+        <div class="list-panel" id="notificationList"></div>
+      </section>
+
+    </main>
+
+    <!-- MOBILE NAVIGATION -->
+    <nav class="mobile-footer">
+      <button class="mobile-nav active" data-page="home"><span>⌂</span><b data-ar="الرئيسية" data-en="Home">الرئيسية</b></button>
+      <button class="mobile-nav" data-page="transfer"><span>⇄</span><b data-ar="تحويل" data-en="Transfer">تحويل</b></button>
+      <button class="mobile-nav" data-page="history"><span>◷</span><b data-ar="السجل" data-en="History">السجل</b></button>
+      <button class="mobile-nav" data-page="notifications"><span>♧</span><b data-ar="الإشعارات" data-en="Alerts">الإشعارات</b></button>
+    </nav>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="Mazen-Pay.js"></script>
+</body>
+</html>

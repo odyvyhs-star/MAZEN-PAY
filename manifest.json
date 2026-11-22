@@ -1,0 +1,18 @@
+{
+  "name": "MAZEN PAY",
+  "short_name": "MAZEN PAY",
+  "description": "MAZEN PAY Demo Wallet",
+  "start_url": "./Mazen-Pay.html",
+  "display": "standalone",
+  "background_color": "#f5f6fb",
+  "theme_color": "#6336c9",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
